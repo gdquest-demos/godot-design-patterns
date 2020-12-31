@@ -52,7 +52,7 @@ power_required = 200.0
 position = Vector2( 0, -14.8726 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 339, 119, 102, 82 )
+region_rect = Rect2( 119, 4, 102, 82 )
 
 [node name="Indicator" type="Sprite" parent="."]
 modulate = Color( 1, 0, 0, 1 )
