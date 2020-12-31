@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "PowerReceiver",
+"language": "GDScript",
+"path": "res://ECS/Components/PowerReceiver.gd"
+}, {
+"base": "Node",
+"class": "PowerSource",
+"language": "GDScript",
+"path": "res://ECS/Components/PowerSource.gd"
+}, {
+"base": "Reference",
+"class": "PowerSystem",
+"language": "GDScript",
+"path": "res://ECS/PowerSystem.gd"
+} ]
+_global_script_class_icons={
+"PowerReceiver": "",
+"PowerSource": "",
+"PowerSystem": ""
+}
+
+[application]
+
+config/name="Godot Design Pattern demos"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
