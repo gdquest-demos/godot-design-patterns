@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://state-machine/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://StateMachine/Player/Player.tscn" type="PackedScene" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 952, 10 )
@@ -8,9 +8,10 @@ extents = Vector2( 952, 10 )
 [node name="StateMachineDemo" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 440, 1032 )
+position = Vector2( 232, 768 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 968, 1040 )

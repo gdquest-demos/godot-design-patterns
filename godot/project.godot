@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
+"base": "Reference",
 "class": "Player",
 "language": "GDScript",
-"path": "res://state-machine/Player/Player.gd"
+"path": "res://StateMachine/Player/Player.gd"
 }, {
-"base": "State",
+"base": "Reference",
 "class": "PlayerState",
 "language": "GDScript",
-"path": "res://state-machine/Player/PlayerState.gd"
+"path": "res://StateMachine/Player/PlayerState.gd"
 }, {
 "base": "Node",
 "class": "PowerReceiver",
@@ -34,15 +34,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ECS/PowerSystem.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "State",
 "language": "GDScript",
-"path": "res://state-machine/State.gd"
+"path": "res://StateMachine/State.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://state-machine/StateMachine.gd"
+"path": "res://StateMachine/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "Player": "",
@@ -57,7 +57,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Design Pattern demos"
-run/main_scene="res://state-machine/StateMachineDemo.tscn"
 config/icon="res://icon.png"
 
 [display]

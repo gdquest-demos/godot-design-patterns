@@ -1,9 +1,6 @@
 # Run.gd
 extends PlayerState
 
-# The run speed in pixels per second. Exporting the variable allows teammates to configure the state.
-export var speed := 500.0
-
 
 func physics_update(delta: float) -> void:
 	# Notice how we have some code duplication between states. That's inherent to the pattern,
@@ -20,8 +17,9 @@ func physics_update(delta: float) -> void:
 		Input.get_action_strength("move_right")
 		- Input.get_action_strength("move_left")
 	)
-	player.velocity.x = speed * input_direction_x
-	player.velocity = player.move_and_slide(player.velocity)
+	player.velocity.x = player.speed * input_direction_x
+	player.velocity.y += player.gravity * delta
+	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
 
 	if Input.is_action_just_pressed("move_up"):
 		state_machine.transition_to("Air", {do_jump = true})
