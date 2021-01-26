@@ -1,6 +1,5 @@
 extends Node
 
-
 var power_system := PowerSystem.new()
 
 
