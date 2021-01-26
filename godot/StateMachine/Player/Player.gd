@@ -15,5 +15,5 @@ onready var fsm := $StateMachine
 onready var label := $Label
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	label.text = fsm.state.name

@@ -9,12 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://StateMachine/Player/Player.gd"
 }, {
-"base": "Reference",
+"base": "State",
 "class": "PlayerState",
 "language": "GDScript",
 "path": "res://StateMachine/Player/PlayerState.gd"
@@ -34,12 +34,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ECS/PowerSystem.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://StateMachine/State.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://StateMachine/StateMachine.gd"
