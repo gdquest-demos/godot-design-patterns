@@ -1,10 +1,7 @@
-# Jump.gd
 extends PlayerState
 
 
-# If we get a message asking us to jump, we jump.
 func enter(msg := {}) -> void:
-	print()
 	if msg.has("do_jump"):
 		player.velocity.y = -player.jump_impulse
 
