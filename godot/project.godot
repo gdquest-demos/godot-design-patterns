@@ -57,6 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Design Pattern demos"
+run/main_scene="res://StateMachine/StateMachineDemo.tscn"
 config/icon="res://icon.png"
 
 [display]
