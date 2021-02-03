@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Tools</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{748AC8E8-148C-48AB-8F84-358C5EE30368}</ProjectGuid>
+    <ProjectGuid>{BF2F76E5-AC42-4490-A763-E95D8BC76269}</ProjectGuid>
     <OutputType>Library</OutputType>
     <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
-    <RootNamespace>GodotDesignPatterndemos</RootNamespace>
-    <AssemblyName>Godot Design Pattern demos</AssemblyName>
+    <RootNamespace>GodotDesignPatterncsharpdemo</RootNamespace>
+    <AssemblyName>Godot Design Pattern csharp demo</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <GodotProjectGeneratorVersion>1.0.7333.3918</GodotProjectGeneratorVersion>
     <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
@@ -53,14 +53,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateMachineCSharp\Player\Air.cs" />
-    <Compile Include="StateMachineCSharp\Player\Idle.cs" />
-    <Compile Include="StateMachineCSharp\Player\Player.cs" />
-    <Compile Include="StateMachineCSharp\Player\PlayerState.cs" />
-    <Compile Include="StateMachineCSharp\Player\Run.cs" />
-    <Compile Include="StateMachineCSharp\Player\StateMachine.cs" />
-    <Compile Include="StateMachineCSharp\State.cs" />
+    <Compile Include="**\*.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

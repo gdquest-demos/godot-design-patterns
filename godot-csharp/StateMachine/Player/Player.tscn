@@ -1,17 +1,17 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://StateMachineCSharp/Player/Player.cs" type="Script" id=1]
-[ext_resource path="res://StateMachineCSharp/Player/StateMachine.cs" type="Script" id=2]
-[ext_resource path="res://StateMachineCSharp/Player/Air.cs" type="Script" id=3]
-[ext_resource path="res://StateMachineCSharp/Player/Run.cs" type="Script" id=4]
-[ext_resource path="res://StateMachineCSharp/Player/Idle.cs" type="Script" id=5]
+[ext_resource path="res://StateMachine/Player/Player.cs" type="Script" id=1]
+[ext_resource path="res://StateMachine/Player/StateMachine.cs" type="Script" id=2]
+[ext_resource path="res://StateMachine/Player/Air.cs" type="Script" id=3]
+[ext_resource path="res://StateMachine/Player/Run.cs" type="Script" id=4]
+[ext_resource path="res://StateMachine/Player/Idle.cs" type="Script" id=5]
 [ext_resource path="res://Shared/player.png" type="Texture" id=6]
 [ext_resource path="res://Shared/monserrate_bold.tres" type="DynamicFont" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 40 )
 
-[node name="PlayerCSharp" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
@@ -24,7 +24,7 @@ shape = SubResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
-InitialState = NodePath("Idle")
+InitialState = NodePath("../../Player/StateMachine/Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
