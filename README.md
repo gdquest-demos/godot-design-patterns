@@ -1,5 +1,7 @@
 # Godot Design Patterns
 
+![Godot design patterns banner](images/design-patterns-banner.png)
+
 Learn to implement design patterns in Godot using the GDScript programming language.
 
 This repository is a collection of useful **programming patterns implemented in Godot**.
