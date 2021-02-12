@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Shared/tileset_platformer.png" type="Texture" id=1]
 
-
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
 

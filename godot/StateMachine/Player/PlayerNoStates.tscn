@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://StateMachine/Player/PlayerNoStates.gd" type="Script" id=1]
+[ext_resource path="res://Shared/player.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 40 )
+
+[node name="PlayerNoStates" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="player" type="Sprite" parent="."]
+position = Vector2( 0, -48 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -40 )
+shape = SubResource( 1 )
