@@ -40,6 +40,7 @@ script = ExtResource( 3 )
 
 [node name="PowerSource" type="Node" parent="."]
 script = ExtResource( 1 )
+PowerAmount = 200.0
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 0, -5.42728 )
@@ -68,3 +69,4 @@ region_rect = Rect2( 449, 49, 102, 37 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Work = SubResource( 1 )
+[connection signal="PowerDrawn" from="PowerSource" to="." method="OnPowerSourcePowerDrawn"]

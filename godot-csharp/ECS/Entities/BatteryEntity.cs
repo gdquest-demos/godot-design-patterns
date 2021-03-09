@@ -13,7 +13,7 @@ public class BatteryEntity : Node2D
     /// <summary>
     /// Actual amount of power currently in the battery
     /// </summary>
-    private float _storedPower;
+    private float _storedPower = 0.0f;
     public float StoredPower
     {
         get { return _storedPower; }
@@ -48,6 +48,10 @@ public class BatteryEntity : Node2D
                               0.0f :
                               Math.Min((MaxStorage - _storedPower) / receiver.PowerRequired, 1.0f);
 
+        source.Efficiency = _storedPower <= 0 ?
+                            0.0f :
+                            Math.Min(_storedPower / source.PowerAmount, 1.0f);
+
         // Update shader with power amount so the indicator is up to date with amount
         var shader = (ShaderMaterial)indicator.Material;
         shader.SetShaderParam("amount", _storedPower / MaxStorage);
@@ -71,6 +75,6 @@ public class BatteryEntity : Node2D
     /// <param name="delta"></param>
     private void OnPowerReceiverPowerReceived(float power, float delta)
     {
-        StoredPower = Math.Min(MaxStorage, StoredPower + power * delta);
+        StoredPower = Math.Min(MaxStorage, _storedPower + power * delta);
     }
 }

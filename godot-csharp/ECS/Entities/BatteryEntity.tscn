@@ -42,9 +42,11 @@ script = ExtResource( 4 )
 
 [node name="PowerSource" type="Node" parent="."]
 script = ExtResource( 3 )
+PowerAmount = 200.0
 
 [node name="PowerReceiver" type="Node" parent="."]
 script = ExtResource( 5 )
+PowerRequired = 200.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -14.8726 )
