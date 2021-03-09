@@ -2,9 +2,9 @@
 
 [ext_resource path="res://ECS/Shared/tileset.svg" type="Texture" id=1]
 [ext_resource path="res://ECS/Shared/battery_indicator.png" type="Texture" id=2]
-[ext_resource path="res://ECS/Components/PowerSource.gd" type="Script" id=3]
-[ext_resource path="res://ECS/Components/PowerReceiver.gd" type="Script" id=4]
-[ext_resource path="res://ECS/Entities/BatteryEntity.gd" type="Script" id=5]
+[ext_resource path="res://ECS/Components/PowerSource.cs" type="Script" id=3]
+[ext_resource path="res://ECS/Entities/BatteryEntity.cs" type="Script" id=4]
+[ext_resource path="res://ECS/Components/PowerReceiver.cs" type="Script" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -38,15 +38,15 @@ shader_param/amount = 0.0
 "power_receivers",
 "power_sources",
 ]]
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="PowerSource" type="Node" parent="."]
 script = ExtResource( 3 )
-power_amount = 200.0
+PowerAmount = 200.0
 
 [node name="PowerReceiver" type="Node" parent="."]
-script = ExtResource( 4 )
-power_required = 200.0
+script = ExtResource( 5 )
+PowerRequired = 200.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -14.8726 )
@@ -60,5 +60,5 @@ material = SubResource( 2 )
 position = Vector2( -23.2885, -17.3956 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
-[connection signal="power_drawn" from="PowerSource" to="." method="_on_PowerSource_power_drawn"]
-[connection signal="power_received" from="PowerReceiver" to="." method="_on_PowerReceiver_power_received"]
+[connection signal="PowerDrawn" from="PowerSource" to="." method="OnPowerSourcePowerDrawn"]
+[connection signal="PowerReceived" from="PowerReceiver" to="." method="OnPowerReceiverPowerReceived"]

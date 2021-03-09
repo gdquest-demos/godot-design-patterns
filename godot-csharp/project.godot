@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Design Pattern csharp demo"
+run/main_scene="res://ECS/Game.tscn"
 config/icon="res://icon.png"
 
 [input]
