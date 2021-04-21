@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	_velocity.y += gravity * delta
 	if is_jumping:
 		var impulse = glide_jump_impulse if _state == States.GLIDING else jump_impulse
-		_velocity.y = -jump_impulse
+		_velocity.y = -impulse
 		_state = States.IN_AIR
 
 	# Moving the character.
