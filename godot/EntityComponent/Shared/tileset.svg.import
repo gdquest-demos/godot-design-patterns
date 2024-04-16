@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset.svg-c018b2f32a64a81c4b93f0603210bda6.stex"
+path="res://.import/tileset.svg-5e64a4ffd02ef8c7e1f4b5122a94507b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ECS/Shared/tileset.svg"
-dest_files=[ "res://.import/tileset.svg-c018b2f32a64a81c4b93f0603210bda6.stex" ]
+source_file="res://EntityComponent/Shared/tileset.svg"
+dest_files=[ "res://.import/tileset.svg-5e64a4ffd02ef8c7e1f4b5122a94507b.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
