@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/battery_indicator.png-b14c1683a70df2f251979406e18e03a9.stex"
+path="res://.import/battery_indicator.png-d2ad5601d9bd0d85c4f08309c7fc43a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ECS/Shared/battery_indicator.png"
-dest_files=[ "res://.import/battery_indicator.png-b14c1683a70df2f251979406e18e03a9.stex" ]
+source_file="res://EntityComponent/Shared/battery_indicator.png"
+dest_files=[ "res://.import/battery_indicator.png-d2ad5601d9bd0d85c4f08309c7fc43a0.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

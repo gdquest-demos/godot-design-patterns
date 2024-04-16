@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ECS/Components/PowerSource.cs" type="Script" id=1]
-[ext_resource path="res://ECS/Shared/tileset.svg" type="Texture" id=2]
-[ext_resource path="res://ECS/Entities/GeneratorEntity.cs" type="Script" id=3]
+[ext_resource path="res://EntityComponent/Components/PowerSource.cs" type="Script" id=1]
+[ext_resource path="res://EntityComponent/Shared/tileset.svg" type="Texture" id=2]
+[ext_resource path="res://EntityComponent/Entities/GeneratorEntity.cs" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Work"

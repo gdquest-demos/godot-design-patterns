@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ECS/Game.cs" type="Script" id=1]
-[ext_resource path="res://ECS/Shared/tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://ECS/Entities/GeneratorEntity.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ECS/Entities/BatteryEntity.tscn" type="PackedScene" id=4]
+[ext_resource path="res://EntityComponent/Game.cs" type="Script" id=1]
+[ext_resource path="res://EntityComponent/Shared/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://EntityComponent/Entities/GeneratorEntity.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EntityComponent/Entities/BatteryEntity.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )

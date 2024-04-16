@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=2 format=2]
 
-[ext_resource path="res://ECS/Shared/tileset.svg" type="Texture" id=1]
+[ext_resource path="res://EntityComponent/Shared/tileset.svg" type="Texture" id=1]
 
 [resource]
 0/name = "tileset.svg 0"
