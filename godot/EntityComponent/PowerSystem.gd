@@ -1,5 +1,5 @@
 class_name PowerSystem
-extends Reference
+extends RefCounted
 
 var sources := {}
 var receivers := {}
@@ -11,12 +11,12 @@ var receivers_already_provided := {}
 
 func setup(power_sources: Array, power_receivers: Array, tilemap: TileMap) -> void:
 	for source in power_sources:
-		var location := tilemap.world_to_map(source.global_position)
+		var location := tilemap.local_to_map(source.global_position)
 		sources[location] = _find_power_source_child(source)
 		paths.push_back([location])
 
 	for receiver in power_receivers:
-		var location := tilemap.world_to_map(receiver.global_position)
+		var location := tilemap.local_to_map(receiver.global_position)
 		receivers[location] = _find_power_receiver_child(receiver)
 
 	for path in paths:

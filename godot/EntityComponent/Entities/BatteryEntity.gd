@@ -1,14 +1,14 @@
 extends Node2D
 
 ## Total amount of power the battery is able to hold
-export var max_storage := 1000.0
+@export var max_storage := 1000.0
 
 ## Actual amount of power currently in the battery
-var stored_power := 0.0 setget _set_stored_power
+var stored_power := 0.0: set = _set_stored_power
 
-onready var receiver := $PowerReceiver
-onready var source := $PowerSource
-onready var indicator := $Indicator
+@onready var receiver := $PowerReceiver
+@onready var source := $PowerSource
+@onready var indicator := $Indicator
 
 
 func _set_stored_power(value: float) -> void:
@@ -16,7 +16,7 @@ func _set_stored_power(value: float) -> void:
 
 	# Make sure all nodes are ready
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 
 	# Set receiver efficiency to 0 if already full, otherwise set it to a percentage
 	# of power that it can still receive from its input capacity.
@@ -31,7 +31,7 @@ func _set_stored_power(value: float) -> void:
 	source.efficiency = (0.0 if stored_power <= 0 else min(stored_power / source.power_amount, 1.0))
 
 	# Update shader with power amount so the indicator is up to date with amount
-	indicator.material.set_shader_param("amount", stored_power / max_storage)
+	indicator.material.set_shader_parameter("amount", stored_power / max_storage)
 
 
 ## Reduce the amount of power in the battery by the power value per second

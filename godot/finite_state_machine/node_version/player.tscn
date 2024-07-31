@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8yssrs2pdc7b"]
+
+[ext_resource type="Script" path="res://finite_state_machine/node_version/player.gd" id="1"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/air.gd" id="2"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/state_machine.gd" id="3"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/run.gd" id="4"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/idle.gd" id="5"]
+[ext_resource type="FontFile" path="res://Shared/monserrate_bold.tres" id="6"]
+[ext_resource type="Texture2D" uid="uid://cga60v1i3bbt8" path="res://Shared/player.png" id="7"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(80, 80)
+
+[node name="PlayerMultipleScripts" type="CharacterBody2D"]
+script = ExtResource("1")
+speed = 700.0
+gravity = 4000.0
+jump_impulse = 1350.0
+
+[node name="player" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+texture = ExtResource("7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("1")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("4")
+
+[node name="Air" type="Node" parent="StateMachine"]
+script = ExtResource("2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -131.0
+offset_right = 39.0
+offset_bottom = -103.0
+theme_override_fonts/font = ExtResource("6")
+text = "State"

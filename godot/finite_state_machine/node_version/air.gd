@@ -13,10 +13,13 @@ func physics_update(delta: float) -> void:
 	)
 	player.velocity.x = player.speed * input_direction_x
 	player.velocity.y += player.gravity * delta
-	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
+	player.set_velocity(player.velocity)
+	player.set_up_direction(Vector2.UP)
+	player.move_and_slide()
+	player.velocity = player.velocity
 
 	if player.is_on_floor():
 		if is_equal_approx(player.velocity.x, 0.0):
-			state_machine.transition_to("Idle")
+			finished.emit("Idle")
 		else:
-			state_machine.transition_to("Run")
+			finished.emit("Run")
