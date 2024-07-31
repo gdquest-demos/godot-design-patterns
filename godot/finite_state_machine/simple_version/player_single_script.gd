@@ -6,13 +6,15 @@ enum States {ON_GROUND, JUMPING, FALLING, GLIDING}
 var state: int = States.ON_GROUND: set = set_state
 
 var speed := 500.0
-var jump_impulse := 1200.0
+var jump_impulse := 1800.0
 var base_gravity := 4000.0
 
 var glide_max_speed := 1000.0
 var glide_acceleration := 1000.0
 var glide_gravity := 400.0
-var glide_jump_impulse := 300.0
+var glide_jump_impulse := 800.0
+
+var current_gravity := base_gravity
 
 
 func _physics_process(delta: float) -> void:
@@ -42,11 +44,10 @@ func _physics_process(delta: float) -> void:
 	if state == States.GLIDING:
 		velocity.x += input_direction_x * glide_acceleration * delta
 		velocity.x = min(velocity.x, glide_max_speed)
-		velocity.y += glide_gravity * delta
 	elif state in [States.ON_GROUND, States.JUMPING]:
 		velocity.x = input_direction_x * speed
-		velocity.y += base_gravity * delta
 
+	velocity.y += current_gravity * delta
 	move_and_slide()
 
 
@@ -55,7 +56,17 @@ func set_state(new_state: int) -> void:
 	var previous_state := state
 	state = new_state
 
+	if previous_state == States.GLIDING:
+		current_gravity = base_gravity
+
 	# You can check both the previous and the new state to determine what to do when the state changes.
 	if state == States.JUMPING:
 		var impulse = glide_jump_impulse if state == States.GLIDING else jump_impulse
-		velocity.y = -impulse
+		if previous_state == States.GLIDING:
+			velocity.y = -glide_jump_impulse
+		else:
+			velocity.y = -impulse
+	elif state == States.GLIDING:
+		current_gravity = glide_gravity
+		# Ensure the character doesn't keep its upward momentum when starting gliding.
+		velocity.y = max(velocity.y, 0.0)
