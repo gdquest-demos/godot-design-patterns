@@ -1,21 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8yssrs2pdc7b"]
+[gd_scene load_steps=11 format=3 uid="uid://c8yssrs2pdc7b"]
 
 [ext_resource type="Script" path="res://finite_state_machine/node_version/player.gd" id="1"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/air.gd" id="2"]
 [ext_resource type="Script" path="res://finite_state_machine/node_version/state_machine.gd" id="3"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/run.gd" id="4"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/idle.gd" id="5"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/states/running.gd" id="4"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/states/idle.gd" id="5"]
 [ext_resource type="FontFile" path="res://Shared/monserrate_bold.tres" id="6"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/states/jumping.gd" id="6_eqw68"]
 [ext_resource type="Texture2D" uid="uid://cga60v1i3bbt8" path="res://Shared/player.png" id="7"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/states/falling.gd" id="7_w7y10"]
+[ext_resource type="Script" path="res://finite_state_machine/node_version/states/gliding.gd" id="8_mgbgb"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(80, 80)
 
 [node name="PlayerMultipleScripts" type="CharacterBody2D"]
 script = ExtResource("1")
-speed = 700.0
-gravity = 4000.0
-jump_impulse = 1350.0
 
 [node name="player" type="Sprite2D" parent="."]
 position = Vector2(0, -48)
@@ -32,11 +31,17 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5")
 
-[node name="Run" type="Node" parent="StateMachine"]
+[node name="Running" type="Node" parent="StateMachine"]
 script = ExtResource("4")
 
-[node name="Air" type="Node" parent="StateMachine"]
-script = ExtResource("2")
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("6_eqw68")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("7_w7y10")
+
+[node name="Gliding" type="Node" parent="StateMachine"]
+script = ExtResource("8_mgbgb")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -39.0

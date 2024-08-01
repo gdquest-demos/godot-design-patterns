@@ -2,7 +2,7 @@
 ## Extend this class and override its methods to implement a state.
 class_name State extends Node
 
-signal finished(next_state_path: String, msg: Dictionary)
+signal finished(next_state_path: String, data: Dictionary)
 
 
 ## Called by the state machine when receiving unhandled input events.
@@ -20,9 +20,9 @@ func physics_update(_delta: float) -> void:
 	pass
 
 
-## Called by the state machine upon changing the active state. The `msg` parameter
+## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(_msg := {}) -> void:
+func enter(previous_state_path: String, data := {}) -> void:
 	pass
 
 
