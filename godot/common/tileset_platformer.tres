@@ -1,6 +1,6 @@
-[gd_resource type="TileSet" load_steps=8 format=2]
+[gd_resource type="TileSet" load_steps=8 format=3]
 
-[ext_resource path="res://Shared/tileset_platformer.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://cx78q1ull058f" path="res://common/tileset_platformer.png" id="1"]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PackedVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )

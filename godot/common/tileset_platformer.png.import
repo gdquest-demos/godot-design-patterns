@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx78q1ull058f"
-path="res://.godot/imported/tileset_platformer.png-a00bea6b34edff2d6015c50f9a248ee5.ctex"
+path="res://.godot/imported/tileset_platformer.png-b8c648c733370f820cfd79936bbd88b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shared/tileset_platformer.png"
-dest_files=["res://.godot/imported/tileset_platformer.png-a00bea6b34edff2d6015c50f9a248ee5.ctex"]
+source_file="res://common/tileset_platformer.png"
+dest_files=["res://.godot/imported/tileset_platformer.png-b8c648c733370f820cfd79936bbd88b3.ctex"]
 
 [params]
 

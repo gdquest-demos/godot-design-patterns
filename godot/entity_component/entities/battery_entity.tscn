@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource path="res://EntityComponent/Shared/tileset.svg" type="Texture2D" id=1]
-[ext_resource path="res://EntityComponent/Shared/battery_indicator.png" type="Texture2D" id=2]
-[ext_resource path="res://EntityComponent/Components/PowerSource.gd" type="Script" id=3]
-[ext_resource path="res://EntityComponent/Components/PowerReceiver.gd" type="Script" id=4]
-[ext_resource path="res://EntityComponent/Entities/BatteryEntity.gd" type="Script" id=5]
+[ext_resource type="Texture2D" uid="uid://c6fx6qkxfw3sv" path="res://entity_component/common/tileset.svg" id="1"]
+[ext_resource type="Texture2D" uid="uid://b4m2ui4peehna" path="res://entity_component/common/battery_indicator.png" id="2"]
+[ext_resource type="Script" path="res://entity_component/components/power_source.gd" id="3"]
+[ext_resource type="Script" path="res://entity_component/components/power_receiver.gd" id="4"]
+[ext_resource type="Script" path="res://entity_component/entities/battery_entity.gd" id="5"]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;

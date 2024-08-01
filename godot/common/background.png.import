@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4m2ui4peehna"
-path="res://.godot/imported/battery_indicator.png-d2ad5601d9bd0d85c4f08309c7fc43a0.ctex"
+uid="uid://bbjvde7vij7fg"
+path="res://.godot/imported/background.png-a7c059213897e1f89fa5e51eec8609f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EntityComponent/Shared/battery_indicator.png"
-dest_files=["res://.godot/imported/battery_indicator.png-d2ad5601d9bd0d85c4f08309c7fc43a0.ctex"]
+source_file="res://common/background.png"
+dest_files=["res://.godot/imported/background.png-a7c059213897e1f89fa5e51eec8609f3.ctex"]
 
 [params]
 

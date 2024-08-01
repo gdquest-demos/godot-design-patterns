@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsuc1wfiksnmn"]
 
-[ext_resource type="TileSet" path="res://Shared/tileset_platformer.tres" id="1_vg063"]
+[ext_resource type="TileSet" path="res://common/tileset_platformer.tres" id="1_vg063"]
 [ext_resource type="PackedScene" uid="uid://cs7i0lkj1pw0n" path="res://finite_state_machine/simple_version/player_single_script.tscn" id="2_rxkn3"]
-[ext_resource type="FontFile" path="res://Shared/monserrate_bold.tres" id="3_c4mk1"]
+[ext_resource type="FontFile" path="res://common/monserrate_bold.tres" id="3_c4mk1"]
 [ext_resource type="PackedScene" uid="uid://c8yssrs2pdc7b" path="res://finite_state_machine/node_version/player.tscn" id="4_vym5w"]
 
 [node name="StateMachineDemo" type="Node2D"]

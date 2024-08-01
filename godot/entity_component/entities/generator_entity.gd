@@ -12,4 +12,4 @@ func _ready() -> void:
 ## the power taken vs amount of power it's able to output
 func _on_PowerSource_power_drawn(power: float, _delta: float) -> void:
 	var proportion: float = power / $PowerSource.power_amount
-	animation_player.playback_speed = proportion
+	animation_player.speed_scale = proportion

@@ -1,7 +1,0 @@
-[gd_resource type="FontFile" load_steps=2 format=2]
-
-[ext_resource path="res://Shared/montserrat_extrabold.otf" type="FontFile" id=1]
-
-[resource]
-size = 22
-font_data = ExtResource( 1 )
