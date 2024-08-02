@@ -1,10 +1,9 @@
 ## Basic generic finite state machine. Initializes states and delegates engine callbacks
 ## (_physics_process, _unhandled_input) to the active state.
-class_name StateMachine
-extends Node
+class_name StateMachine extends Node
 
 ## Emitted right after a state transition.
-signal transitioned(state_name)
+signal state_changed()
 
 ## The initial state of the state machine. If not set, the first child node is used.
 @export var initial_state: State = null
@@ -16,7 +15,7 @@ signal transitioned(state_name)
 
 
 func _ready() -> void:
-	# Give every state a reference to the state machine.
+	# Connect to every state's finished signal to transition to the next state.
 	for state_node: State in find_children("*", "State"):
 		state_node.finished.connect(_transition_to_next_state)
 
@@ -26,7 +25,6 @@ func _ready() -> void:
 	state.enter("")
 
 
-# The state machine subscribes to node callbacks and delegates them to the state objects.
 func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
 
@@ -43,9 +41,9 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	if not has_node(target_state_path):
 		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
 		return
-	
+
 	var previous_state_path := state.name
 	state.exit()
 	state = get_node(target_state_path)
 	state.enter(previous_state_path, data)
-	emit_signal("transitioned", state.name)
+	state_changed.emit()
