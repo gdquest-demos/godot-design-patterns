@@ -16,6 +16,9 @@ var glide_jump_impulse := 800.0
 
 var current_gravity := base_gravity
 
+@onready var sophia: Sprite2D = %Sophia
+@onready var sophia_skin_2d: CanvasGroup = %SophiaSkin2D
+
 
 func _physics_process(delta: float) -> void:
 	# Starting with input.
@@ -52,9 +55,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = min(velocity.x, glide_max_speed)
 	elif state in [States.RUNNING, States.JUMPING, States.FALLING]:
 		velocity.x = input_direction_x * speed
+
 	else:
 		velocity.x = 0.0
 
+	if abs(velocity.x) > 0.0:
+		sophia.scale.x = -sign(velocity.x)
 	velocity.y += current_gravity * delta
 	move_and_slide()
 
@@ -70,14 +76,20 @@ func set_state(new_state: int) -> void:
 	# when the state changes.
 	if state == States.IDLE:
 		velocity.x = 0.0
+		sophia_skin_2d.set_state("idle")
+	elif state == States.RUNNING:
+		sophia_skin_2d.set_state("run")
 	elif state == States.JUMPING:
-		var impulse = glide_jump_impulse if state == States.GLIDING else jump_impulse
+		sophia_skin_2d.set_state("jump")
 		if previous_state == States.GLIDING:
 			velocity.y = -glide_jump_impulse
 		else:
-			velocity.y = -impulse
+			velocity.y = -jump_impulse
+	elif state == States.FALLING:
+		sophia_skin_2d.set_state("fall")
 	elif state == States.GLIDING:
 		current_gravity = glide_gravity
 		# Ensure the character doesn't keep its upward momentum when starting
 		# gliding.
 		velocity.y = max(velocity.y, 0.0)
+		sophia_skin_2d.set_state("glide")
