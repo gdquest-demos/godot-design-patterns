@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d162rx4cs4jdr"]
 
-[ext_resource type="Script" path="res://entity_component/components/power_source.gd" id="1"]
+[ext_resource type="Script" uid="uid://ln2eki8wlsoa" path="res://entity_component/components/power_source.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c6fx6qkxfw3sv" path="res://entity_component/common/tileset.svg" id="2"]
-[ext_resource type="Script" path="res://entity_component/entities/generator_entity.gd" id="3"]
+[ext_resource type="Script" uid="uid://dptf0dryv47tk" path="res://entity_component/entities/generator_entity.gd" id="3"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Work"
@@ -35,7 +35,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1omnk"]
 _data = {
-"Work": SubResource("1")
+&"Work": SubResource("1")
 }
 
 [node name="GeneratorEntity" type="Node2D" groups=["power_sources"]]

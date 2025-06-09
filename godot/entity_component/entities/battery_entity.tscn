@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://ccued1magj88v"]
 
 [ext_resource type="Texture2D" uid="uid://c6fx6qkxfw3sv" path="res://entity_component/common/tileset.svg" id="1"]
 [ext_resource type="Texture2D" uid="uid://b4m2ui4peehna" path="res://entity_component/common/battery_indicator.png" id="2"]
-[ext_resource type="Script" path="res://entity_component/components/power_source.gd" id="3"]
-[ext_resource type="Script" path="res://entity_component/components/power_receiver.gd" id="4"]
-[ext_resource type="Script" path="res://entity_component/entities/battery_entity.gd" id="5"]
+[ext_resource type="Script" uid="uid://ln2eki8wlsoa" path="res://entity_component/components/power_source.gd" id="3"]
+[ext_resource type="Script" uid="uid://byskxc6o74p7f" path="res://entity_component/components/power_receiver.gd" id="4"]
+[ext_resource type="Script" uid="uid://g0bvbm2pf42k" path="res://entity_component/entities/battery_entity.gd" id="5"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
 
 //A percentage from 0 to 1 for how full the battery is
@@ -29,36 +29,34 @@ void fragment() {
 	COLOR = vec4(mask.rgb, uv_percentage * masking_area);
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id="2"]
 resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/amount = 0.0
+shader = SubResource("1")
+shader_parameter/amount = 0.0
 
-[node name="BatteryEntity" type="Node2D" groups=[
-"power_receivers",
-"power_sources",
-]]
-script = ExtResource( 5 )
+[node name="BatteryEntity" type="Node2D" groups=["power_receivers", "power_sources"]]
+script = ExtResource("5")
 
 [node name="PowerSource" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 power_amount = 200.0
 
 [node name="PowerReceiver" type="Node" parent="."]
-script = ExtResource( 4 )
+script = ExtResource("4")
 power_required = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2( 0, -14.8726 )
-texture = ExtResource( 1 )
+position = Vector2(0, -14.8726)
+texture = ExtResource("1")
 region_enabled = true
-region_rect = Rect2( 119, 4, 102, 82 )
+region_rect = Rect2(119, 4, 102, 82)
 
 [node name="Indicator" type="Sprite2D" parent="."]
-modulate = Color( 1, 0, 0, 1 )
-material = SubResource( 2 )
-position = Vector2( -23.2885, -17.3956 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
+modulate = Color(1, 0, 0, 1)
+material = SubResource("2")
+position = Vector2(-23.2885, -17.3956)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2")
+
 [connection signal="power_drawn" from="PowerSource" to="." method="_on_PowerSource_power_drawn"]
 [connection signal="power_received" from="PowerReceiver" to="." method="_on_PowerReceiver_power_received"]

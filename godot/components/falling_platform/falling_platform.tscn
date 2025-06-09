@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://wohdyxvvwc2a"]
+
+[ext_resource type="PackedScene" uid="uid://b2hmt7xtvewl7" path="res://components/platform/platform.tscn" id="1_qk3rk"]
+[ext_resource type="Script" uid="uid://b11i8ingy5avb" path="res://components/falling_platform/falling_platform.gd" id="2_qp5sf"]
+[ext_resource type="Texture2D" uid="uid://cwvqogrswk78v" path="res://assets/falling_platform.png" id="2_w3oub"]
+[ext_resource type="Shader" uid="uid://b3ru4iyo1wj83" path="res://components/falling_platform/hologram_platform.gdshader" id="2_yxuhq"]
+[ext_resource type="Texture2D" uid="uid://dbsleildwbxib" path="res://assets/falling_platform_bg.png" id="3_un6p0"]
+[ext_resource type="Texture2D" uid="uid://b2yeb4dmkpcll" path="res://assets/shapes/circle_16x16.png" id="6_tymp7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ag0l"]
+resource_local_to_scene = true
+size = Vector2(128, 64)
+
+[sub_resource type="Gradient" id="Gradient_7wqtg"]
+offsets = PackedFloat32Array(0.2, 0.7, 0.8)
+colors = PackedColorArray(0.6, 0.6, 0.6, 1, 0.823965, 0.823965, 0.823965, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yu8de"]
+gradient = SubResource("Gradient_7wqtg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c44te"]
+shader = ExtResource("2_yxuhq")
+shader_parameter/wave_sampler = SubResource("GradientTexture1D_yu8de")
+
+[sub_resource type="Curve" id="Curve_tbhn4"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dsnal"]
+curve = SubResource("Curve_tbhn4")
+
+[sub_resource type="Curve" id="Curve_ggpx4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ubawa"]
+curve = SubResource("Curve_ggpx4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mvqlm"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 64, 0)
+gravity = Vector3(0, -40, 0)
+damping_min = 0.5
+damping_max = 1.0
+scale_min = 0.4
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_ubawa")
+alpha_curve = SubResource("CurveTexture_dsnal")
+
+[node name="FallingPlatform" instance=ExtResource("1_qk3rk")]
+script = ExtResource("2_qp5sf")
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
+shape = SubResource("RectangleShape2D_0ag0l")
+
+[node name="SpriteBG" type="NinePatchRect" parent="VisualRoot" index="0"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_un6p0")
+patch_margin_left = 42
+patch_margin_top = 32
+patch_margin_right = 42
+patch_margin_bottom = 34
+
+[node name="Sprite" parent="VisualRoot" index="1"]
+material = SubResource("ShaderMaterial_c44te")
+texture = ExtResource("2_w3oub")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_mvqlm")
+texture = ExtResource("6_tymp7")
+lifetime = 1.5
+
+[node name="ReappearTimer" type="Timer" parent="." index="3"]
+unique_name_in_owner = true

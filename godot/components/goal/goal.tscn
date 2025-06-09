@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlrr63rfv0lu7"]
+
+[ext_resource type="Script" uid="uid://bw37wqgfposuf" path="res://components/goal/goal.gd" id="1_4etvy"]
+[ext_resource type="Texture2D" uid="uid://durmk43hp5c60" path="res://assets/flag.png" id="2_6y7a2"]
+[ext_resource type="Material" uid="uid://gl4h711mb1cy" path="res://components/goal/mat/goal_mat.tres" id="2_u4a5x"]
+[ext_resource type="Texture2D" uid="uid://dalnlwlkjeyds" path="res://assets/shapes/star_shape_sprite.png" id="4_ng12l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isamh"]
+size = Vector2(128, 320)
+
+[sub_resource type="Curve" id="Curve_ju0ke"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ig02f"]
+curve = SubResource("Curve_ju0ke")
+
+[sub_resource type="Curve" id="Curve_uvmk1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3e7tp"]
+curve = SubResource("Curve_uvmk1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ejnep"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_ig02f")
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+angular_velocity_min = -400.0
+angular_velocity_max = 400.0
+gravity = Vector3(0, 800, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_3e7tp")
+color = Color(1, 0.913333, 0.35, 1)
+
+[node name="Goal" type="Node2D"]
+script = ExtResource("1_4etvy")
+
+[node name="Flag" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = ExtResource("2_u4a5x")
+texture = ExtResource("2_6y7a2")
+offset = Vector2(0, -128)
+
+[node name="Marker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(256, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_isamh")
+
+[node name="StarsParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -192)
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_ejnep")
+texture = ExtResource("4_ng12l")
+lifetime = 1.25
+one_shot = true
+explosiveness = 1.0
+draw_order = 0

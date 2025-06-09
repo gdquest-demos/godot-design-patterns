@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3nx1h323wbc6"]
+
+[ext_resource type="Script" uid="uid://cd7xbmnbwxcqx" path="res://components/platform/platform_track.gd" id="1_cm8s4"]
+
+[node name="PlatformTrack" type="Line2D"]
+width = 16.0
+default_color = Color(0.92, 0.53912, 0.0736, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("1_cm8s4")

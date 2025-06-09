@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bqbgephstjhkt"
-path="res://.godot/imported/montserrat_extrabold.otf-4e03d1f9b6b4687f740a0766840ee6d6.fontdata"
+uid="uid://be7d133qyhron"
+path="res://.godot/imported/Rubik-ExtraBold.ttf-af4e12247bc07eb8783a7016aa1c66e3.fontdata"
 
 [deps]
 
-source_file="res://common/montserrat_extrabold.otf"
-dest_files=["res://.godot/imported/montserrat_extrabold.otf-4e03d1f9b6b4687f740a0766840ee6d6.fontdata"]
+source_file="res://assets/fonts/Rubik-ExtraBold.ttf"
+dest_files=["res://.godot/imported/Rubik-ExtraBold.ttf-af4e12247bc07eb8783a7016aa1c66e3.fontdata"]
 
 [params]
 

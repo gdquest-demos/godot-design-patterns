@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bchunjugg3bt5"]
+
+[ext_resource type="Shader" path="res://assets/animated_background/animated_background.gdshader" id="1_jv4s6"]
+
+[sub_resource type="Curve" id="Curve_8uhgr"]
+min_value = 0.2
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_todi0"]
+min_value = 0.1
+_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_wcu6w"]
+_data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_n2l1q"]
+curve_x = SubResource("Curve_8uhgr")
+curve_y = SubResource("Curve_todi0")
+curve_z = SubResource("Curve_wcu6w")
+
+[resource]
+shader = ExtResource("1_jv4s6")
+shader_parameter/base_color = Color(0.966667, 0.95, 1, 1)
+shader_parameter/mult_color = Color(0.705882, 0.694118, 1, 1)
+shader_parameter/camera_offset = 0.0
+shader_parameter/curves_sampler = SubResource("CurveXYZTexture_n2l1q")

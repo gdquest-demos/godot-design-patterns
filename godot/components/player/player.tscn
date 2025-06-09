@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://q5x3wu7cwita"]
+
+[ext_resource type="Script" uid="uid://bss4eoxio7sm7" path="res://components/player/player.gd" id="1_gm2wc"]
+[ext_resource type="Texture2D" uid="uid://2epfwxa3bec7" path="res://assets/shapes/circle_64x64.png" id="3_im0ul"]
+[ext_resource type="PackedScene" uid="uid://rom8ca8dp5q7" path="res://components/player/sophia_skin_2d.tscn" id="4_gful2"]
+[ext_resource type="Material" uid="uid://dycsv6xw73e3a" path="res://components/player/material/character_outline.tres" id="4_ujwqd"]
+
+[sub_resource type="Curve" id="Curve_wlaau"]
+_data = [Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f2kyh"]
+curve = SubResource("Curve_wlaau")
+
+[sub_resource type="Curve" id="Curve_dyhud"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_802n6"]
+curve = SubResource("Curve_dyhud")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rbaog"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -50, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_802n6")
+alpha_curve = SubResource("CurveTexture_f2kyh")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gtqst"]
+radius = 48.0
+height = 128.0
+
+[node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+floor_snap_length = 16.0
+script = ExtResource("1_gm2wc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -128)
+offset = Vector2(0, -128)
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Dust" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+process_material = SubResource("ParticleProcessMaterial_rbaog")
+texture = ExtResource("3_im0ul")
+lifetime = 0.8
+
+[node name="VisualRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="VisualRoot"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+metadata/_edit_use_anchors_ = true
+
+[node name="SpriteViewport" type="SubViewportContainer" parent="VisualRoot/Control"]
+unique_name_in_owner = true
+material = ExtResource("4_ujwqd")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -269.25
+offset_right = 160.0
+offset_bottom = 18.75
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(160, 144)
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="VisualRoot/Control/SpriteViewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(320, 288)
+render_target_update_mode = 4
+
+[node name="SophiaSkin2D" parent="VisualRoot/Control/SpriteViewport/SubViewport" instance=ExtResource("4_gful2")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="VisualRoot/Control/SpriteViewport/SubViewport"]
+position = Vector2(-12, -114)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = ExtResource("4_ujwqd")
+position = Vector2(0, -64)
+shape = SubResource("CapsuleShape2D_gtqst")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg7ljxuyn75cf"]
+
+[ext_resource type="Texture2D" uid="uid://d01ijqyejsivr" path="res://assets/cog.png" id="1_8lr7b"]
+[ext_resource type="Script" uid="uid://dnedrt76e0jmi" path="res://components/moving_platform/cog.gd" id="1_hs5rs"]
+[ext_resource type="Texture2D" uid="uid://d1t5sytsg0y16" path="res://assets/cog_back.png" id="2_ecxdm"]
+
+[node name="Cog" type="Node2D"]
+script = ExtResource("1_hs5rs")
+
+[node name="Back" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_ecxdm")
+
+[node name="Back2" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -10)
+texture = ExtResource("2_ecxdm")
+
+[node name="Front" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_8lr7b")

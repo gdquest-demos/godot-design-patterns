@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2hmt7xtvewl7"]
+
+[ext_resource type="Script" uid="uid://byjd8f587e4mf" path="res://components/platform/platform.gd" id="1_0n7li"]
+[ext_resource type="Texture2D" uid="uid://cek37jhx328t7" path="res://assets/platform_sprite.png" id="2_dc42d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_802t3"]
+resource_local_to_scene = true
+size = Vector2(128, 64)
+
+[node name="Platform" type="AnimatableBody2D"]
+script = ExtResource("1_0n7li")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_802t3")
+one_way_collision = true
+
+[node name="VisualRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite" type="NinePatchRect" parent="VisualRoot"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dc42d")
+patch_margin_left = 42
+patch_margin_top = 32
+patch_margin_right = 42
+patch_margin_bottom = 34

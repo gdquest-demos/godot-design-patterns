@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=3 uid="uid://bpfd2it0yqeke"]
+
+[ext_resource type="Script" uid="uid://dcugnkybr4l6s" path="res://components/collectable/collectable.gd" id="1_c5dfm"]
+[ext_resource type="Texture2D" uid="uid://dpt58bfkmh2kl" path="res://assets/shapes/circle_128x128.png" id="2_ck2ej"]
+[ext_resource type="Texture2D" uid="uid://b2yeb4dmkpcll" path="res://assets/shapes/circle_16x16.png" id="2_w6a85"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fhwb1"]
+radius = 64.0
+
+[sub_resource type="Gradient" id="Gradient_cspnw"]
+colors = PackedColorArray(1, 0.866667, 0.2, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7uqp1"]
+gradient = SubResource("Gradient_cspnw")
+
+[sub_resource type="Curve" id="Curve_puhwf"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lpmvs"]
+curve = SubResource("Curve_puhwf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t356k"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_lpmvs")
+color_ramp = SubResource("GradientTexture1D_7uqp1")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_05qp5"]
+load_path = "res://.godot/imported/star_sprite.png-d7742b784c32fb92efc2d51f7686f7eb.ctex"
+
+[sub_resource type="Animation" id="Animation_j6hw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualAnchor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualAnchor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1vl8r"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualAnchor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-0.261799, 0.261799, -0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualAnchor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.7, 1.2, 1.7, 2.2),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [8.0, -8.0, 8.0, -8.0, 8.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualAnchor/StarSprite:material:shader_parameter/intensity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [1.25, 0.8, 1.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxhey"]
+_data = {
+&"RESET": SubResource("Animation_j6hw6"),
+&"idle": SubResource("Animation_1vl8r")
+}
+
+[node name="Collectable" type="Area2D"]
+script = ExtResource("1_c5dfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_fhwb1")
+
+[node name="VisualAnchor" type="Node2D" parent="."]
+unique_name_in_owner = true
+rotation = -0.261799
+
+[node name="Circle" type="Sprite2D" parent="VisualAnchor"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.4)
+texture = ExtResource("2_ck2ej")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="VisualAnchor"]
+unique_name_in_owner = true
+position = Vector2(2.07055, -7.72741)
+rotation = 0.261799
+process_material = SubResource("ParticleProcessMaterial_t356k")
+texture = ExtResource("2_w6a85")
+lifetime = 1.8
+
+[node name="StarSprite" type="Sprite2D" parent="VisualAnchor"]
+unique_name_in_owner = true
+scale = Vector2(0.6, 0.6)
+texture = SubResource("CompressedTexture2D_05qp5")
+offset = Vector2(0, -7.865)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_rxhey")
+}

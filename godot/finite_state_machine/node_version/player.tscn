@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8yssrs2pdc7b"]
 
-[ext_resource type="Script" path="res://finite_state_machine/node_version/player.gd" id="1"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/state_machine.gd" id="3"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/states/running.gd" id="4"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/states/idle.gd" id="5"]
+[ext_resource type="Script" uid="uid://dnjqwj4xg1lxj" path="res://finite_state_machine/node_version/player.gd" id="1"]
+[ext_resource type="Script" uid="uid://bfcj1td33bi8" path="res://finite_state_machine/node_version/state_machine.gd" id="3"]
+[ext_resource type="Script" uid="uid://nd2by40308sg" path="res://finite_state_machine/node_version/states/running.gd" id="4"]
+[ext_resource type="Script" uid="uid://cp8wpjje0ngvo" path="res://finite_state_machine/node_version/states/idle.gd" id="5"]
 [ext_resource type="FontFile" path="res://common/monserrate_bold.tres" id="6"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/states/jumping.gd" id="6_eqw68"]
+[ext_resource type="Script" uid="uid://b3g3b2tyrqjw8" path="res://finite_state_machine/node_version/states/jumping.gd" id="6_eqw68"]
 [ext_resource type="Texture2D" uid="uid://cga60v1i3bbt8" path="res://common/player.png" id="7"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/states/falling.gd" id="7_w7y10"]
-[ext_resource type="Script" path="res://finite_state_machine/node_version/states/gliding.gd" id="8_mgbgb"]
+[ext_resource type="Script" uid="uid://5khq852e2j55" path="res://finite_state_machine/node_version/states/falling.gd" id="7_w7y10"]
+[ext_resource type="Script" uid="uid://3q8o5uwgt48x" path="res://finite_state_machine/node_version/states/gliding.gd" id="8_mgbgb"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(80, 80)

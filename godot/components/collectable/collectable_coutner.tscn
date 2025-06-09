@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://be8onyje2rspm"]
+
+[ext_resource type="Script" uid="uid://do2i25ukty2fr" path="res://components/collectable/collectable_coutner.gd" id="1_keyox"]
+[ext_resource type="FontFile" uid="uid://be7d133qyhron" path="res://assets/fonts/Rubik-ExtraBold.ttf" id="1_u84o3"]
+[ext_resource type="Texture2D" uid="uid://cc32dljq4wlsm" path="res://assets/star_sprite.png" id="4_q13sl"]
+
+[node name="CollectableCoutner" type="HBoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme_override_constants/separation = 16
+script = ExtResource("1_keyox")
+
+[node name="CountLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("1_u84o3")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_q13sl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="StarCenter" type="Control" parent="StarTexture"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2

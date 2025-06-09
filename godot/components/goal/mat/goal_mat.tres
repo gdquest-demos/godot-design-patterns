@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://gl4h711mb1cy"]
+
+[ext_resource type="Shader" path="res://components/goal/mat/flag_deformation.gdshader" id="1_w0vi3"]
+
+[resource]
+shader = ExtResource("1_w0vi3")
+shader_parameter/bend = 0.0
